@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const apiUrl = "http://localhost:5140";
+
+axios.defaults.baseURL=API.env.REACT_APP_API_KEY 
+axios.interceptors.response.use(
+  response => response, 
+  error => {
+    console.error('Axios Error:', error.response ? error.response.data : error.message);
+    //return Promise.reject(error); // דחוף את השגיאה כדי שתוכל לטפל בה במקום אחר
+  }
+);
 
 export default {
   getTasks: async () => {
