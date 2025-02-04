@@ -5,7 +5,6 @@ using TodoApi;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -26,6 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.MapGet("/",()=>"todoListServer API is running");
 
 app.UseCors("AllowAll");
 
