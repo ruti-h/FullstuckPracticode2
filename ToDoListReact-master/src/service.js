@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL=REACT_APP_API_URL
+axios.defaults.baseURL=process.env.REACT_APP_API_URL
 axios.interceptors.response.use(
   response => response, 
   error => {
@@ -13,7 +13,7 @@ axios.interceptors.response.use(
 export default {
   getTasks: async () => {
     try {
-      const result = await axios.get(`${apiUrl}/items`);
+      const result = await axios.get(`/items`);
       return result.data;
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -24,7 +24,7 @@ export default {
   addTask: async (name) => {
     try {
       const newTask = { name, isComplete: false };
-      const result = await axios.post(`${apiUrl}/items`, newTask);
+      const result = await axios.post(`/items`, newTask);
       return result.data;
     } catch (error) {
       console.error("Error adding task:", error);
@@ -35,7 +35,7 @@ export default {
   setCompleted: async (id, isComplete) => {
     try {
       const updatedTask = { isComplete };
-      await axios.put(`${apiUrl}/items/${id}`, updatedTask);
+      await axios.put(`/items/${id}`, updatedTask);
       return { success: true };
     } catch (error) {
       console.error("Error updating task:", error);
@@ -56,7 +56,7 @@ export default {
 
   deleteTask: async (id) => {
     try {
-      await axios.delete(`${apiUrl}/items/${id}`);
+      await axios.delete(`/items/${id}`);
       return { success: true };
     } catch (error) {
       console.error("Error deleting task:", error);
