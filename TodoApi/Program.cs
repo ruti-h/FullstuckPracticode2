@@ -29,11 +29,11 @@ app.MapGet("/",()=>"todoListServer API is running");
 
 app.UseCors("AllowAll");
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 // הגדרת ה-routes
 app.MapGet("/items", async (ToDoDbContext db) =>
