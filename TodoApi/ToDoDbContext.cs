@@ -6,7 +6,8 @@ using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 namespace TodoApi;
 
 public partial class ToDoDbContext : DbContext
-{
+{ 
+
     public ToDoDbContext()
     {
     }
