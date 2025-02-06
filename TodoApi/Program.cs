@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+Console.WriteLine("Connection String: " + builder.Configuration.GetConnectionString("ToDoDB"));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
